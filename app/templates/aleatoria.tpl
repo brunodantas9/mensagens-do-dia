@@ -1,12 +1,10 @@
-
 % rebase('base.tpl', title='Mensagem Aleatória')
-<h1>🎲 Mensagem Aleatória</h1>
-
+<h2>🎲 Mensagem Aleatória</h2>
 % if m:
   <div class="message-card {{m.categoria}} {% if m.favorita %}favorita{% endif %}">
     <p>{{m.texto}}</p>
-    <small>Categoria: {{m.categoria}}</small>
+    <small><strong>Categoria:</strong> {{m.categoria}}</small>
   </div>
 % else:
-  <p>Não há mensagens cadastradas ainda.</p>
+  <p>Nenhuma mensagem disponível.</p>
 % end

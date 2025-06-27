@@ -1,22 +1,16 @@
 
-```html
 % rebase('base.tpl', title='Nova Mensagem')
-<h1>➕ Nova Mensagem</h1>
-
+<h2>➕ Nova Mensagem</h2>
 <form method="POST" action="/nova">
-  <label>Texto:</label><br>
-  <textarea name="texto" required></textarea><br>
-
-  <label>Categoria:</label><br>
-  <select name="categoria" required>
+  <textarea name="texto" required placeholder="Digite a mensagem..."></textarea><br>
+  <label>Categoria:</label>
+  <select name="categoria">
     <option value="motivacional">Motivacional</option>
     <option value="reflexiva">Reflexiva</option>
     <option value="espiritual">Espiritual</option>
   </select><br>
-
-  <label>Favorita?</label>
-  <input type="checkbox" name="favorita"><br><br>
-
+  <label><input type="checkbox" name="favorita"> Favorita</label><br>
+  <label>Agendar para:</label>
+  <input type="date" name="data_agendada"><br><br>
   <button type="submit">Salvar</button>
 </form>
-

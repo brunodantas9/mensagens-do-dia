@@ -1,78 +1,55 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #f9f9f9, #e8f0ff);
   margin: 0;
-  padding: 0;
+  padding: 20px;
 }
 
 .container {
   max-width: 800px;
-  margin: 2rem auto;
-  background: #fff;
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin: auto;
 }
 
-h1 {
-  text-align: center;
-  color: #444;
+h1, h2 {
+  color: #333;
 }
 
-input[type="text"], select {
-  padding: 0.5rem;
-  margin-right: 0.5rem;
+.message-card {
+  background-color: #fff;
+  border-left: 6px solid #ccc;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.motivacional { border-color: #007BFF; }
+.reflexiva { border-color: #FFC107; }
+.espiritual { border-color: #28A745; }
+.favorita { background-color: #fff9e6; }
+
+input[type="text"], textarea, select, input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 15px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-button, a.button {
-  padding: 0.5rem 1rem;
-  background-color: #00bcd4;
+button {
+  background-color: #007BFF;
   color: white;
   border: none;
-  border-radius: 4px;
-  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-button:hover, a.button:hover {
-  background-color: #0097a7;
+button:hover {
+  background-color: #0056b3;
 }
 
-.message-card {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 5px;
-  background: #e0f7fa;
-  border-left: 5px solid #00bcd4;
-}
-
-.message-card.motivacional {
-  border-left-color: #4caf50;
-  background: #e8f5e9;
-}
-
-.message-card.espiritual {
-  border-left-color: #9c27b0;
-  background: #f3e5f5;
-}
-
-.message-card.humor {
-  border-left-color: #ff9800;
-  background: #fff3e0;
-}
-
-.message-card.favorita {
-  border: 2px solid gold;
-  background: #fff8e1;
-}
-
-footer {
-  text-align: center;
-  font-size: 0.8rem;
-  margin-top: 2rem;
-  color: #aaa;
+.atalhos a {
+  margin-right: 10px;
 }
 

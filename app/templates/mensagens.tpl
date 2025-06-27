@@ -2,12 +2,12 @@
 <h1>🌟 Mensagens do Dia 🌟</h1>
 
 <form method="GET" action="/mensagens">
-  <input type="text" name="q" placeholder="Buscar mensagem..." value="{{q}}">
+  <input type="text" name="q" placeholder="Buscar mensagem..." value="{{q or ''}}">
   <select name="categoria">
     <option value="">Todas</option>
-    <option value="motivacional">Motivacional</option>
-    <option value="reflexiva">Reflexiva</option>
-    <option value="espiritual">Espiritual</option>
+    <option value="motivacional" % if categoria == 'motivacional': selected %>Motivacional</option>
+    <option value="reflexiva" % if categoria == 'reflexiva': selected %>Reflexiva</option>
+    <option value="espiritual" % if categoria == 'espiritual': selected %>Espiritual</option>
   </select>
   <button type="submit">Filtrar</button>
 </form>

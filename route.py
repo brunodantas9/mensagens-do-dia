@@ -1,90 +1,78 @@
-from bottle import Bottle, run, request, redirect
-from app.controllers.application import Application
-from app.data.mensagens import *
-from datetime import date
 from bottle import route, run, template, request, redirect
+from app.controllers.application import render
+from datetime import date
+import random
 
+mensagens = [
+    {"id": 1, "texto": "Acredite em si mesmo!", "categoria": "motivacional", "favorita": True, "data_agendada": "2025-06-27"},
+    {"id": 2, "texto": "Tudo tem seu tempo certo.", "categoria": "reflexiva", "favorita": False, "data_agendada": ""},
+    {"id": 3, "texto": "Confie em Deus e siga!", "categoria": "espiritual", "favorita": True, "data_agendada": ""}
+]
 
-app = Bottle()
-ctl = Application()
+def buscar_mensagem(id):
+    return next((m for m in mensagens if m["id"] == id), None)
 
+@route("/")
+@route("/mensagens")
+def mensagens_index():
+    q = request.query.q or ""
+    categoria = request.query.categoria or ""
+    filtradas = [m for m in mensagens if q.lower() in m["texto"].lower()]
+    if categoria:
+        filtradas = [m for m in filtradas if m["categoria"] == categoria]
+    return render("mensagens", mensagens=filtradas, total=len(filtradas), q=q, categoria=categoria)
 
-@app.route("/static/<filepath:path>")
-def static(filepath):
-    return bottle.static_file(filepath, root="./app/static")
-
-
-@app.route("/")
-@app.route("/mensagens")
-def mensagens():
-    q = request.query.get("q", "")
-    categoria = request.query.get("categoria", "")
-    filtradas = mensagem.filtrar(q, categoria)
-    return ctl.render("mensagens", mensagens=filtradas, total=len(filtradas), q=q, categoria=categoria)
-
-
-@app.route("/nova", method=["GET", "POST"])
+@route("/nova", method=["GET", "POST"])
 def nova():
     if request.method == "POST":
-        texto = request.forms["texto"]
-        categoria = request.forms["categoria"]
-        favorita = "favorita" in request.forms
-        data_agendada = request.forms.get("data_agendada") or None
-        if data_agendada:
-            data_agendada = date.fromisoformat(data_agendada)
-        adicionar(texto, categoria, favorita, data_agendada)
-        return redirect("/mensagens")
-    return ctl.render("nova")
+        texto = request.forms.get("texto")
+        categoria = request.forms.get("categoria")
+        favorita = True if request.forms.get("favorita") else False
+        data_agendada = request.forms.get("data_agendada") or ""
+        novo_id = max([m["id"] for m in mensagens], default=0) + 1
+        mensagens.append({"id": novo_id, "texto": texto, "categoria": categoria, "favorita": favorita, "data_agendada": data_agendada})
+        redirect("/mensagens")
+    return render("nova")
 
-
-@app.route("/ver/<id:int>")
+@route("/ver/<id:int>")
 def ver(id):
-    m = buscar_por_id(id)
-    return ctl.render("ver", m=m)
+    m = buscar_mensagem(id)
+    return render("ver", m=m)
 
-
-@app.route("/editar/<id:int>", method=["GET", "POST"])
+@route("/editar/<id:int>", method=["GET", "POST"])
 def editar(id):
-    m = buscar_por_id(id)
+    m = buscar_mensagem(id)
     if request.method == "POST":
-        texto = request.forms["texto"]
-        categoria = request.forms["categoria"]
-        favorita = "favorita" in request.forms
-        data_agendada = request.forms.get("data_agendada") or None
-        if data_agendada:
-            data_agendada = date.fromisoformat(data_agendada)
-        atualizar(id, texto, categoria, favorita, data_agendada)
-        return redirect("/mensagens")
-    return ctl.render("editar", m=m)
+        m["texto"] = request.forms.get("texto")
+        m["categoria"] = request.forms.get("categoria")
+        m["favorita"] = True if request.forms.get("favorita") else False
+        m["data_agendada"] = request.forms.get("data_agendada") or ""
+        redirect("/mensagens")
+    return render("editar", m=m)
 
+@route("/deletar/<id:int>")
+def deletar(id):
+    global mensagens
+    mensagens = [m for m in mensagens if m["id"] != id]
+    redirect("/mensagens")
 
-@app.route("/deletar/<id:int>")
-def deletar_mensagem(id):
-    deletar(id)
-    return redirect("/mensagens")
-
-
-@app.route("/favoritas")
+@route("/favoritas")
 def favoritas():
-    favoritas = [m for m in listar() if m.favorita]
-    return ctl.render("favoritas", mensagens=favoritas)
+    favoritas = [m for m in mensagens if m["favorita"]]
+    return render("favoritas", mensagens=favoritas)
 
-
-@app.route("/aleatoria")
-def aleatoria():
-    import random
-    todas = listar()
-    m = random.choice(todas) if todas else None
-    return ctl.render("aleatoria", m=m)
-
-
-@app.route("/hoje")
+@route("/hoje")
 def hoje():
-    hoje = date.today()
-    agendadas = [m for m in listar() if m.data_agendada == hoje]
-    m = agendadas[0] if agendadas else None
-    return ctl.render("hoje", m=m)
+    hoje_str = str(date.today())
+    m = next((m for m in mensagens if m["data_agendada"] == hoje_str), None)
+    return render("hoje", m=m)
 
+@route("/aleatoria")
+def aleatoria():
+    if mensagens:
+        m = random.choice(mensagens)
+    else:
+        m = None
+    return render("aleatoria", m=m)
 
-if __name__ == "__main__":
-    run(app, host="localhost", port=8080, debug=True)
+run(debug=True, host="localhost", port=8080)

@@ -1,19 +1,16 @@
 % rebase('base.tpl', title='Editar Mensagem')
-<h1>✏️ Editar Mensagem</h1>
-
+<h2>✏️ Editar Mensagem</h2>
 <form method="POST" action="/editar/{{m.id}}">
-  <label>Texto:</label><br>
   <textarea name="texto" required>{{m.texto}}</textarea><br>
-
-  <label>Categoria:</label><br>
-  <select name="categoria" required>
-    <option value="motivacional" % if m.categoria == 'motivacional': selected %> >Motivacional</option>
-    <option value="reflexiva" % if m.categoria == 'reflexiva': selected %> >Reflexiva</option>
-    <option value="espiritual" % if m.categoria == 'espiritual': selected %> >Espiritual</option>
+  <label>Categoria:</label>
+  <select name="categoria">
+    <option value="motivacional" % if m.categoria=='motivacional': selected %>Motivacional</option>
+    <option value="reflexiva" % if m.categoria=='reflexiva': selected %>Reflexiva</option>
+    <option value="espiritual" % if m.categoria=='espiritual': selected %>Espiritual</option>
   </select><br>
-
-  <label>Favorita?</label>
-  <input type="checkbox" name="favorita" % if m.favorita: checked %> ><br><br>
-
-  <button type="submit">Atualizar</button>
+  <label><input type="checkbox" name="favorita" % if m.favorita: checked %>> Favorita</label><br>
+  <label>Agendar para:</label>
+  <input type="date" name="data_agendada" value="{{m.data_agendada}}"><br><br>
+  <button type="submit">Salvar Alterações</button>
 </form>
+
