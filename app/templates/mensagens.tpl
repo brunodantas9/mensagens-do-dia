@@ -2,12 +2,12 @@
 <h1>🌟 Mensagens do Dia 🌟</h1>
 
 <form method="GET" action="/mensagens">
-  <input type="text" name="q" placeholder="Buscar mensagem..." value="{{q or ''}}">
+  <input type="text" name="q" placeholder="Buscar mensagem..." value="{{q}}">
   <select name="categoria">
     <option value="">Todas</option>
-    <option value="motivacional" % if categoria == 'motivacional': selected %>Motivacional</option>
-    <option value="reflexiva" % if categoria == 'reflexiva': selected %>Reflexiva</option>
-    <option value="espiritual" % if categoria == 'espiritual': selected %>Espiritual</option>
+    <option value="motivacional" {{'selected' if categoria=='motivacional' else ''}}>Motivacional</option>
+    <option value="reflexiva" {{'selected' if categoria=='reflexiva' else ''}}>Reflexiva</option>
+    <option value="espiritual" {{'selected' if categoria=='espiritual' else ''}}>Espiritual</option>
   </select>
   <button type="submit">Filtrar</button>
 </form>
@@ -24,11 +24,11 @@
 <hr>
 
 % for m in mensagens:
-  <div class="message-card {{m.categoria}} {% if m.favorita %}favorita{% endif %}">
-    <p>{{m.texto}}</p>
-    <small><strong>Categoria:</strong> {{m.categoria}}</small><br>
-    <a href="/ver/{{m.id}}">🔍 Ver</a> |
-    <a href="/editar/{{m.id}}">✏️ Editar</a> |
-    <a href="/deletar/{{m.id}}" onclick="return confirmarRemocao()">🗑️ Excluir</a>
+  <div class="message-card {{m['categoria']}} {% if m['favorita'] %}favorita{% endif %}">
+    <p>{{m['texto']}}</p>
+    <small><strong>Categoria:</strong> {{m['categoria']}}</small><br>
+    <a href="/ver/{{m['id']}}">🔍 Ver</a> |
+    <a href="/editar/{{m['id']}}">✏️ Editar</a> |
+    <a href="/deletar/{{m['id']}}" onclick="return confirmarRemocao()">🗑️ Excluir</a>
   </div>
 % end

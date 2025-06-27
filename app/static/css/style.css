@@ -1,55 +1,82 @@
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #f9f9f9, #e8f0ff);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f7f7f7;
   margin: 0;
-  padding: 20px;
-}
-
-.container {
-  max-width: 800px;
-  margin: auto;
-}
-
-h1, h2 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #333;
 }
 
-.message-card {
-  background-color: #fff;
-  border-left: 6px solid #ccc;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+h1 {
+  font-size: 2.2rem;
+  color: #222;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-.motivacional { border-color: #007BFF; }
-.reflexiva { border-color: #FFC107; }
-.espiritual { border-color: #28A745; }
-.favorita { background-color: #fff9e6; }
+form {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-input[type="text"], textarea, select, input[type="date"] {
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0 15px 0;
+input, select, button {
+  padding: 0.5rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
 button {
-  background-color: #007BFF;
+  background-color: #4CAF50;
   color: white;
   border: none;
-  padding: 10px 16px;
-  border-radius: 5px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #45a049;
+}
+
+.message-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+.message-card.favorita {
+  border-left: 4px solid gold;
+  background: #fffdf0;
+}
+
+.atalhos {
+  margin: 1rem 0;
+  text-align: center;
 }
 
 .atalhos a {
-  margin-right: 10px;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.atalhos a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #666;
 }
 
