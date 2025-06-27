@@ -1,5 +1,5 @@
 % rebase('base.tpl', title='Mensagem de Hoje')
-<h2>📅 Mensagem de Hoje</h2>
+
 % if m:
   <div class="message-card {{m['categoria']}} {% if m['favorita'] %}favorita{% endif %}">
     <p>{{m['texto']}}</p>
