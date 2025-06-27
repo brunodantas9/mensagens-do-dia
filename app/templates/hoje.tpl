@@ -7,5 +7,5 @@
     <small><strong>Agendada para:</strong> {{m['data_agendada']}}</small>
   </div>
 % else:
-  <p>Nenhuma mensagem agendada para hoje.</p>
+  <p>Não há mensagem agendada para hoje.</p>
 % end

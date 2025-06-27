@@ -1,106 +1,98 @@
-* {
-  margin:0; padding:0; box-sizing:border-box;
-}
-
 body {
-  font-family:'Poppins',sans-serif;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-  color:#333;
-  min-height:100vh;
-  display:flex; flex-direction:column; align-items:center;
-  padding:20px;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f8fb;
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
-
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
 header h1 {
-  font-size:2.8rem; margin-bottom:10px; color:#2a2a72;
+  text-align: center;
+  color: #3b5998;
+  margin-bottom: 10px;
 }
-
-.atalhos {
-  display:flex; gap:15px; margin-bottom:20px;
+nav {
+  text-align: center;
+  margin-bottom: 20px;
 }
-
-.atalhos a {
-  text-decoration:none; color:#2a2a72; font-weight:600;
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #3b5998;
+  font-weight: 600;
 }
-
-.atalhos a:hover {
-  color:#ff4081;
+nav a:hover {
+  color: #00aaff;
+  transition: color 0.3s;
 }
-
 form {
-  display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
-  margin-bottom:20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
 }
-
-input,select,textarea,button {
-  padding:12px 16px; font-size:1rem;
-  border-radius:8px; border:1px solid #ccc; outline:none;
+form input[type="text"],
+form select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
 }
-
-input:focus,select:focus,textarea:focus {
-  border-color:#2a2a72;
+form button {
+  padding: 8px 16px;
+  background: #00aaff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
 }
-
-button {
-  background:#2a2a72;
-  color:white; border:none; cursor:pointer;
-  transition: background .3s;
+form button:hover {
+  background: #008ecc;
 }
-
-button:hover {
-  background:#ff4081;
-}
-
 .message-card {
-  background:#fff; border-radius:10px; padding:20px;
-  margin:15px 0; width:100%; max-width:700px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);
-  transition:transform .2s;
+  background: #f9fbff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  border-left: 5px solid #00aaff;
+  border-radius: 8px;
 }
-
-.message-card:hover {
-  transform:translateY(-5px);
-}
-
+.message-card.motivacional { border-left-color: #00c853; }
+.message-card.reflexiva { border-left-color: #ffab00; }
+.message-card.espiritual { border-left-color: #6a1b9a; }
 .message-card.favorita {
-  border-left:6px solid #ffeb3b;
-  background:#fffde7;
+  background: #fff9e6;
 }
-
-.message-card.motivacional {
-  border-left:6px solid #4caf50;
-}
-
-.message-card.reflexiva {
-  border-left:6px solid #ff9800;
-}
-
-.message-card.espiritual {
-  border-left:6px solid #3f51b5;
-}
-
 .message-card p {
-  font-size:1.2rem; margin-bottom:8px;
-  line-height:1.4;
+  margin: 0 0 8px 0;
+  font-size: 16px;
 }
-
 .message-card small {
-  font-size:.9rem; color:#666;
+  display: block;
+  margin-bottom: 10px;
+  color: #666;
 }
-
 .message-card a {
-  text-decoration:none; color:#2a2a72; font-weight:600;
-  margin-right:12px; font-size:.95rem;
+  margin-right: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  color: #0066cc;
 }
-
 .message-card a:hover {
-  color:#ff4081;
+  text-decoration: underline;
 }
-
-main {
-  flex:1; width:100%; max-width:800px;
-}
-
 footer {
-  margin-top:30px; font-size:.9rem; color:#555;
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 40px;
 }

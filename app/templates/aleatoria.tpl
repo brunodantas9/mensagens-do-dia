@@ -6,5 +6,5 @@
     <small><strong>Categoria:</strong> {{m['categoria']}}</small>
   </div>
 % else:
-  <p>Nenhuma mensagem disponível no momento.</p>
+  <p>Nenhuma mensagem disponível.</p>
 % end
