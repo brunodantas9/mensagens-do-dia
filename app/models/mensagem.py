@@ -1,4 +1,5 @@
 import json
+import random
 from datetime import datetime
 from pathlib import Path
 
@@ -21,8 +22,13 @@ class Mensagem:
             "favorita": self.favorita
         }
 
+    def salvar(self):
+        mensagens = Mensagem.listar()
+        mensagens.append(self)
+        Mensagem.salvar_arquivo(mensagens)
+
     @classmethod
-    def ler_arquivo(cls):
+    def listar(cls):
         if not ARQUIVO.exists():
             return []
         with open(ARQUIVO, 'r', encoding='utf-8') as f:
@@ -38,64 +44,36 @@ class Mensagem:
             json.dump([m.para_dict() for m in mensagens], f, ensure_ascii=False, indent=2)
 
     @classmethod
-    def listar(cls):
-        return cls.ler_arquivo()
-
-    @classmethod
     def buscar(cls, id):
-        mensagens = cls.ler_arquivo()
-        for m in mensagens:
+        for m in cls.listar():
             if m.id == id:
                 return m
         return None
 
     @classmethod
-    def adicionar(cls, texto, categoria):
-        mensagens = cls.ler_arquivo()
-        novo_id = 1 if not mensagens else max(m.id for m in mensagens) + 1
-        nova = Mensagem(novo_id, texto, categoria)
-        mensagens.append(nova)
-        cls.salvar_arquivo(mensagens)
-
-    @classmethod
-    def editar(cls, id, texto, categoria):
-        mensagens = cls.ler_arquivo()
+    def atualizar(cls, id, texto, categoria, favorita):
+        mensagens = cls.listar()
         for m in mensagens:
             if m.id == id:
                 m.texto = texto
                 m.categoria = categoria
-                break
+                m.favorita = favorita
         cls.salvar_arquivo(mensagens)
 
     @classmethod
     def deletar(cls, id):
-        mensagens = cls.ler_arquivo()
-        mensagens = [m for m in mensagens if m.id != id]
+        mensagens = [m for m in cls.listar() if m.id != id]
         cls.salvar_arquivo(mensagens)
-
-    @classmethod
-    def marcar_como_favorita(cls, id):
-        mensagens = cls.ler_arquivo()
-        for m in mensagens:
-            if m.id == id:
-                m.favorita = not m.favorita
-                break
-        cls.salvar_arquivo(mensagens)
-
-    @classmethod
-    def favoritas(cls):
-        return [m for m in cls.ler_arquivo() if m.favorita]
 
     @classmethod
     def aleatoria(cls):
-        import random
-        mensagens = cls.ler_arquivo()
+        mensagens = cls.listar()
         return random.choice(mensagens) if mensagens else None
 
     @classmethod
-    def do_dia(cls):
+    def mensagem_do_dia(cls):
         hoje = datetime.now().strftime('%Y-%m-%d')
-        mensagens = [m for m in cls.ler_arquivo() if m.data == hoje]
-        return mensagens[0] if mensagens else None
-
-
+        for m in cls.listar():
+            if m.data == hoje:
+                return m
+        return None

@@ -2,11 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>{{title or 'Mensagens do Dia'}}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Mensagens do Dia</title>
   <link rel="stylesheet" href="/static/css/style.css">
-  <script src="/static/js/script.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="container">

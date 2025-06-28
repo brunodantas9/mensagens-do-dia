@@ -1,16 +1,1 @@
-[
-  {
-    "id": 1,
-    "texto": "Acredite em você mesmo!",
-    "categoria": "motivacional",
-    "data": "2025-06-27",
-    "favorita": false
-  },
-  {
-    "id": 2,
-    "texto": "A gratidão transforma dias comuns em bênçãos.",
-    "categoria": "espiritual",
-    "data": "2025-06-27",
-    "favorita": true
-  }
-]
+[]

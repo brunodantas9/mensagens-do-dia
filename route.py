@@ -26,7 +26,9 @@ def nova_mensagem_submit():
     categoria = request.forms.get('categoria')
     favorita = True if request.forms.get('favorita') else False
 
-    nova = Mensagem(texto=texto, categoria=categoria, favorita=favorita)
+    mensagens = Mensagem.listar()
+    novo_id = max([m.id for m in mensagens], default=0) + 1
+    nova = Mensagem(id=novo_id, texto=texto, categoria=categoria, favorita=favorita)
     nova.salvar()
     redirect('/mensagens')
 
@@ -60,8 +62,7 @@ def deletar_mensagem(id):
 
 @route('/favoritas')
 def favoritas():
-    mensagens = Mensagem.listar()
-    favoritas = [m for m in mensagens if m.favorita]
+    favoritas = [m for m in Mensagem.listar() if m.favorita]
     return render("favoritas", mensagens=favoritas)
 
 @route('/aleatoria')
@@ -77,5 +78,4 @@ def hoje():
     if m:
         return render("hoje", m=m)
     redirect('/mensagens')
-
-
+run(host='localhost', port=8080, debug=True, reloader=True)
