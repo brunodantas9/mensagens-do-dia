@@ -1,98 +1,220 @@
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #f4f8fb;
+/* Reset básico */
+* {
   margin: 0;
   padding: 0;
-  color: #333;
+  box-sizing: border-box;
 }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
 .container {
   max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease;
 }
+
+/* Cabeçalho */
 header h1 {
   text-align: center;
-  color: #3b5998;
-  margin-bottom: 10px;
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #333;
 }
+
 nav {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
+
 nav a {
   margin: 0 10px;
-  text-decoration: none;
-  color: #3b5998;
+  color: #5e35b1;
   font-weight: 600;
-}
-nav a:hover {
-  color: #00aaff;
+  text-decoration: none;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   transition: color 0.3s;
 }
-form {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-form input[type="text"],
-form select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-}
-form button {
-  padding: 8px 16px;
-  background: #00aaff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-}
-form button:hover {
-  background: #008ecc;
-}
-.message-card {
-  background: #f9fbff;
-  padding: 15px;
-  border: 1px solid #ddd;
-  margin-bottom: 15px;
-  border-left: 5px solid #00aaff;
-  border-radius: 8px;
-}
-.message-card.motivacional { border-left-color: #00c853; }
-.message-card.reflexiva { border-left-color: #ffab00; }
-.message-card.espiritual { border-left-color: #6a1b9a; }
-.message-card.favorita {
-  background: #fff9e6;
-}
-.message-card p {
-  margin: 0 0 8px 0;
-  font-size: 16px;
-}
-.message-card small {
-  display: block;
-  margin-bottom: 10px;
-  color: #666;
-}
-.message-card a {
-  margin-right: 10px;
-  text-decoration: none;
-  font-weight: 500;
-  color: #0066cc;
-}
-.message-card a:hover {
+
+nav a:hover {
+  color: #1e88e5;
   text-decoration: underline;
 }
+
+/* Formulário de filtro */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in;
+}
+
+form input[type="text"],
+form select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+form button {
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+form button:hover {
+  background-color: #1565c0;
+  transform: scale(1.05);
+}
+
+/* Cartões de mensagens */
+.message-card {
+  background-color: #fafafa;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-left: 6px solid #2196f3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  animation: slideUp 0.6s ease-in-out;
+}
+
+.message-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Categorias com cores diferentes */
+.message-card.motivacional {
+  border-left-color: #4caf50;
+}
+
+.message-card.reflexiva {
+  border-left-color: #ff9800;
+}
+
+.message-card.espiritual {
+  border-left-color: #9c27b0;
+}
+
+.message-card.favorita {
+  background-color: #fff8e1;
+}
+
+.message-card p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.message-card small {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.message-card a {
+  margin-right: 12px;
+  text-decoration: none;
+  color: #1e88e5;
+  font-weight: 500;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.message-card a:hover {
+  text-decoration: underline;
+  color: #0d47a1;
+}
+
+/* Rodapé */
 footer {
   text-align: center;
+  margin-top: 40px;
   font-size: 14px;
   color: #aaa;
-  margin-top: 40px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+select, input[type="date"] {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Modo escuro automático (prefers-color-scheme) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1c1c1e;
+    color: #f1f1f1;
+  }
+
+  .container {
+    background-color: #2c2c2e;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+  }
+
+  nav a {
+    color: #bb86fc;
+  }
+
+  .message-card {
+    background-color: #3a3a3c;
+    color: #fff;
+  }
+
+  .message-card small {
+    color: #ccc;
+  }
+
+  form input,
+  form select,
+  textarea,
+  select,
+  input[type="date"] {
+    background-color: #2c2c2e;
+    color: #fff;
+    border: 1px solid #555;
+  }
 }
