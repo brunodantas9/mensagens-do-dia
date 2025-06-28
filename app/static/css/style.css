@@ -1,80 +1,80 @@
-body {
+/* Reset básico */
+body, h1, h2, h3, p, ul {
   margin: 0;
   padding: 0;
+}
+
+body {
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(to bottom, #f0f4f8, #d9e2ec);
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.container {
-  width: 90%;
-  max-width: 800px;
-  background: white;
-  padding: 30px;
-  margin: 50px 0;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
+  background-color: #f2f4f8;
   color: #222;
+  line-height: 1.6;
+  padding: 2rem;
+}
+
+/* Cabeçalho principal */
+h1 {
   text-align: center;
-  font-size: 2.5em;
-  margin-bottom: 10px;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
 }
 
-h2 {
-  color: #4a4a4a;
-  margin-top: 40px;
+/* Bloco principal */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 }
 
-a {
-  color: #3b82f6;
+/* Barra de navegação */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+nav a {
   text-decoration: none;
   font-weight: 600;
+  color: #333;
+  transition: all 0.3s;
 }
 
-a:hover {
-  text-decoration: underline;
+nav a:hover {
+  color: #007bff;
 }
 
-input[type="text"], select {
-  padding: 8px;
-  margin: 10px 5px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1em;
-  width: 200px;
-}
-
-button, input[type="submit"] {
-  padding: 10px 16px;
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-button:hover, input[type="submit"]:hover {
-  background-color: #2563eb;
-}
-
+/* Mensagem */
 .message-card {
-  background: #fefefe;
-  padding: 16px;
-  margin: 20px 0;
-  border-left: 5px solid #3b82f6;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
+  background: #f9f9ff;
+  border-left: 5px solid #007bff;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
 }
 
 .message-card.favorita {
-  border-left-color: gold;
-  background-color: #fffbe6;
+  border-left-color: #ff4081;
+  background-color: #fff0f5;
+}
+
+/* Botões */
+a {
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 0.95rem;
+}
+
+/* Categoria */
+.categoria {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+  margin-top: 0.5rem;
 }

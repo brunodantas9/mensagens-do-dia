@@ -2,11 +2,14 @@ import json
 import random
 from datetime import datetime
 from pathlib import Path
+from datetime import date
+
 
 ARQUIVO = Path(__file__).parent.parent / 'data' / 'mensagens.json'
 
+
 class Mensagem:
-    def __init__(self, id, texto, categoria, data=None, favorita=False):
+    def __init__(self, id, texto, categoria, favorita=False, data_agendada=None, criado_em=None):
         self.id = id
         self.texto = texto
         self.categoria = categoria
@@ -41,7 +44,8 @@ class Mensagem:
     @classmethod
     def salvar_arquivo(cls, mensagens):
         with open(ARQUIVO, 'w', encoding='utf-8') as f:
-            json.dump([m.para_dict() for m in mensagens], f, ensure_ascii=False, indent=2)
+            json.dump([m.para_dict() for m in mensagens],
+                      f, ensure_ascii=False, indent=2)
 
     @classmethod
     def buscar(cls, id):

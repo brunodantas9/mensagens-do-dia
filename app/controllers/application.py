@@ -1,8 +1,5 @@
-import os
-from bottle import TEMPLATE_PATH, template
-
-TEMPLATE_PATH.insert(0, os.path.join(os.path.dirname(__file__), '../templates'))
+from bottle import template
 
 def render(tpl, **kwargs):
-    return template(tpl, **kwargs)
+    return template('base', tpl=tpl, **kwargs)
 
